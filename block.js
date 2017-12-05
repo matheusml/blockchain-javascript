@@ -7,20 +7,20 @@ class Block {
         this.data = data
         this.timestamp = new Date()
         this.difficulty = difficulty
-        this.tries = 0
+        this.nonce = 0
         
         this.mine()
     }
 
     generateHash() {
-        return sha256(this.index + this.previousHash + JSON.stringify(this.data) + this.timestamp + this.tries).toString()
+        return sha256(this.index + this.previousHash + JSON.stringify(this.data) + this.timestamp + this.nonce).toString()
     }
 
     mine() {
         this.hash = this.generateHash()
 
         while (!(/^0*$/.test(this.hash.substring(0, this.difficulty)))) {
-            this.tries++
+            this.nonce++
             this.hash = this.generateHash()
         }
     }
