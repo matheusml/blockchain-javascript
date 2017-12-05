@@ -5,7 +5,7 @@ class Block {
         this.index = index
         this.previousHash = previousHash
         this.data = data
-        this.timestamp = new Date().getTime()
+        this.timestamp = new Date()
         this.difficulty = difficulty
         this.tries = 0
         
